@@ -1,0 +1,11 @@
+spring:
+  webflux:
+    base-path: /sse
+
+sse:
+  config:
+    web:
+      secure:
+        allowed-origins:
+          - "*"
+
