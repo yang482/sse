@@ -16,8 +16,6 @@ class WebSecureConfig: WebFluxConfigurer {
 
     override fun addCorsMappings(registry: CorsRegistry) {
 
-        allowedOrigins.forEach { println(it) }
-
         // CORS 관련 하여 이곳에서 설정한다. ex) allows host 등
         registry.addMapping("/**")
             .allowedOrigins(*allowedOrigins)
