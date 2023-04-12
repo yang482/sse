@@ -21,9 +21,17 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    all {
+        exclude(group="org.springframework.boot", module="spring-boot-starter-logging")
+    }
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework:spring-webmvc")
+
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")

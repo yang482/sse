@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" monitorInterval="5">
+    <Properties>
+        <!--
+        %c, %logger : 해당 로그를 쓰는 로거의 이름.
+        %C, %class : 해당 로그를 요청한 클래스 이름
+        %d, %date : 해당 로그가 발생한 시간
+        %enc, %encode : 특정 언어에서의 출력을 위한 문자 인코딩
+        %ex, %exception, %throwable : 예외 로그. 길이를 설정할 수 있음.
+        %F, %file : 해당 로그가 발생한 클래스 파일명
+        %l, %location : 해당 로그가 발생한 클래스명.메소드명(파일:라인)
+        %L, %line : 해당 로그가 발생한 라인 번호
+        %m, %msg, %message : 로그문에 전달된 메시지
+        %n : 줄바꿈
+        %p, %level : 로그 레벨
+        %r, %relative : 로그 처리시간
+        %t, %thread : 해당 로그가 발생한 스레드명
+        %style{pattern}{ANSI style} : ANSI를 사용해 특정 패턴을 스타일링함
+        %highlight{pattern}{style} : 로그 레벨명을 ANSI 색깔로 하이라이트
+
+        ex)
+        <Property name="consoleLayout">%style{%d{yyyy-MM-dd HH:mm:ss, SSS}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C}{bright,yellow}: %m%n%throwable</Property>
+        -->
+        <Property name="consoleLayout">%d{yyyy-MM-dd HH:mm:ss, SSS} %-5level [%t] [%C:%L] - %m%n%throwable</Property>
+        <Property name="sqlLayout">%d{yyyy-MM-dd HH:mm:ss, SSS} %-5level [%t] [%C:%L] - %n%m%n%throwable</Property>
+    </Properties>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${consoleLayout}" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+        </logger>
+        <logger name="root" level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+    </Loggers>
+</Configuration>
