@@ -32,6 +32,9 @@ dependencies {
     implementation("org.springframework:spring-webmvc")
 
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
+    // https://mvnrepository.com/artifact/com.lmax/disruptor
+    implementation("com.lmax:disruptor:3.4.4")
+
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
