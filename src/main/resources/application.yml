@@ -3,6 +3,7 @@ spring:
     base-path: /sse
 
 sse:
+  mode: standalone
   config:
     web:
       secure:
