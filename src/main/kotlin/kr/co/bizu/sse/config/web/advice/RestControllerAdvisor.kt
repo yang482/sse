@@ -29,12 +29,18 @@ class RestControllerAdvisor {
 
     @ExceptionHandler(ServerWebInputException::class)
     suspend fun serverWebInputExceptionHandler(e: ServerWebInputException): ResponseEntity<Map<String, Any>> {
+
+        logger.error("", e)
+
         return ResponseEntity.ok().body(
             mapOf("code" to DEFAULT_EXCEPTION_CODE, "msg" to "BAD_REQUEST")
         )
     }
     @ExceptionHandler(Exception::class)
     suspend fun exceptionHandler(e: Exception): ResponseEntity<Map<String, Any>> {
+
+        logger.error("", e)
+
         return ResponseEntity.ok().body(
             mapOf("code" to DEFAULT_EXCEPTION_CODE, "msg" to DEFAULT_EXCEPTION_MESSAGE)
         )
